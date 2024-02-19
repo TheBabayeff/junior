@@ -10,30 +10,35 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class AnketResource extends Resource
 {
     protected static ?string $model = Anket::class;
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-//    public static function getNavigationBadge(): ?string
-//    {
-//        return static::$model::where('status', 'new')->count();
-//    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::$model::where('status', 'new')->count();
+    }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                //Forms\Components\Repeater::make('vacancy_id'),
                 Forms\Components\TextInput::make('vacancy_id')
                     ->numeric(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\TextInput::make('phone')
                     ->tel()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('pdf')
+                Forms\Components\FileUpload::make('photo')
+                    ->directory('ankets-photos'),
+                Forms\Components\FileUpload::make('pdf')
                     ->required()
                     ->columnSpanFull(),
             ]);
@@ -43,8 +48,10 @@ class AnketResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('vacancy_id')
-                    ->numeric()
+                Tables\Columns\ImageColumn::make('photo')
+                    ,
+                Tables\Columns\TextColumn::make('vacancy.name')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -64,7 +71,13 @@ class AnketResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('pdf')
+                    ->label('PDF')
+                    ->color('success')
+                    ->url(function ($record) {
+                        $pdfPath = Storage::url("{$record->pdf}");
+                        return asset($pdfPath);
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

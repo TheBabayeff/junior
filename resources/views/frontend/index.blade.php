@@ -1,4 +1,5 @@
 @extends('frontend.layouts.app')
+@section('title', 'Junior Achievment Azerbaijan')
 @section('content')
     <section class="wpo-hero-section-1">
         <div class="container-fluid">
@@ -53,7 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="r-img">
-                                    <img src="assets/images/step.png" alt="">
+                                    <img src="{{ asset('assets/images/step.png') }}" alt="Jaa Azerbaijan">
                                 </div>
                             </div>
                         </div>
@@ -63,63 +64,7 @@
             </div>
         </div>
     </section>
-    <!-- end of wpo-hero-section-1 slider -->
-    <section class="wpo-features-section-s5">
-        <div class="container">
-            <div class="row justify-content-center" >
-                <div class="col-lg-6">
-                    <div class="wpo-section-title" >
-                        <span>What We Do</span>
-                        <h2>Fəaliyyət istiqamətimiz</h2>
-                        <p>JA təlim proqramları özündə üç əsas istiqamət – karyerahazırlığı, maliyyə savadlılığı və
-                            sahibkarlıq – əks etdirən bir kurrikulum üzərində hazırlanıb.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row" >
-                <div class="col col-xl-4 col-lg-4 col-sm-6 col-12">
-                    <div class="wpo-features-item">
-                        <div class="wpo-features-icon">
-                            <div class="icon">
-                                <img src="assets/images/icon/KadrIcon.png" alt="">
-                            </div>
-                        </div>
-                        <div class="wpo-features-text">
-                            <h2><a href="service-single.html">Karyera hazırlığı</a></h2>
-                            <p>JA gəncləri iş dünyası ilə tanış edir və onlara məqsədyönlü şəkildə peşə seçimi etmələri üçün kömək edir</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-xl-4 col-lg-4 col-sm-6 col-12">
-                    <div class="wpo-features-item active">
-                        <div class="wpo-features-icon">
-                            <div class="icon">
-                                <img src="assets/images/icon/SahibkarIcon.png" alt="">
-                            </div>
-                        </div>
-                        <div class="wpo-features-text">
-                            <h2><a href="service-single.html">Sahibkarlıq</a></h2>
-                            <p>JA iş dünyası ilə təhsil sistemi arasında körpü quraraq gənclər üçün sahibkarlıqanlayışı, biznes və onun idarə olunması, əmək bazarının tələblərini daha yaxşıanlamaları üçün proqramlar həyata keçirir</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-xl-4 col-lg-4 col-sm-6 col-12">
-                    <div class="wpo-features-item">
-                        <div class="wpo-features-icon">
-                            <div class="icon">
-                                <img src="assets/images/icon/MaaliyeIcon.png" alt="">
-                            </div>
-                        </div>
-                        <div class="wpo-features-text">
-                            <h2><a href="service-single.html">Maliyyə savadlılığı</a></h2>
-                            <p>JA büdcə, xərc, gəlir, investisiya və kreditdən məsuliyyətli istifadə mövzusundapraktik təlimlər keçirir</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of wpo-features-section -->
+
     <section class="wpo-about-section section-padding">
         <div class="container">
             <div class="row align-items-center">
@@ -153,7 +98,7 @@
                             <li>{{ __('welcome.entrepreneurship') }}</li>
                             <li>{{ __('welcome.financialLiteracy') }}</li>
                         </ul>
-                        <a class="theme-btn-s2" href="">{{ __('welcome.moreAbout') }}</a>
+                        <a class="theme-btn-s2" href="{{ route('about') }}">{{ __('welcome.moreAbout') }}</a>
                     </div>
                 </div>
             </div>
@@ -337,7 +282,7 @@
                                 <div class="wpo-event-content">
                                     <div class="wpo-event-text-top">
                                         <span>24 Nov,  2021</span>
-                                        <h2><a href="event-single.html">{{ $vacancy->name }}</a></h2>
+                                        <h2><a href="{{ route('vacancy.show', $vacancy->id) }}">{{ $vacancy->name }}</a></h2>
                                         <p>{{ \Illuminate\Support\Str::limit($vacancy->description, 200) }}</p>
                                         <a class="read-more" href="{{ route('vacancy.show', $vacancy->id) }}">{{ __('welcome.appeal') }}</a>
                                     </div>

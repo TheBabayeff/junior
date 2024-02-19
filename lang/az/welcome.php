@@ -20,6 +20,8 @@ return [
     'becomeVolunteer' => 'Könüllü Ol',
     'appeal' => 'Müraciət et',
     'latestNews' => 'Son xəbərlər və yeniliklər',
+    'latestProjects' => 'Layihələrimiz',
+    'ourTeam' => 'Bizim komanda',
 
     'youthPrograms' => 'Gənclərin Sahibkarlıq Proqramı',
     'workReadiness' => 'Karyera hazırlığı',

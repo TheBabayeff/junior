@@ -680,7 +680,6 @@
                     minlength: 2
                 },
 
-                email: "required",
 
                 phone: "required",
 
@@ -697,10 +696,11 @@
 
             submitHandler: function (form) {
                 var formData = new FormData(form);
+                var url = form.attr('action')
 
                 $.ajax({
                     type: "POST",
-                    url: "/volunteers",
+                    url: url,
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -805,7 +805,44 @@
     });
 
 
+    $(document).ready(function() {
+        $('.imagePreview').click(function() {
+            $('#photo').click();
+        });
+
+        $(document).on("change", ".uploadFile", function() {
+            var uploadFile = $(this);
+            var files = !!this.files ? this.files : [];
+            if (!files.length || !window.FileReader) return;
+
+            if (/^image/.test(files[0].type)) {
+                var reader = new FileReader();
+                reader.readAsDataURL(files[0]);
+
+                reader.onloadend = function() {
+                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                }
+            }
+        });
+    });
+    function previewFile() {
+        const preview = document.querySelector('.imagePreview');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            // Bu, yüklənən şəkilin önizləməsini əlavə edir.
+            preview.style.backgroundImage = `url('${reader.result}')`;
+            preview.style.backgroundSize = 'cover';
+            preview.style.backgroundPosition = 'center';
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
 
 })(window.jQuery);
+
 
 

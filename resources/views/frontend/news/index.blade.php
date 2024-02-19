@@ -45,7 +45,7 @@
                 <div class="pagination-wrapper pagination-wrapper-center">
                     <ul class="pg-pagination">
                         @if ($news->onFirstPage())
-                            <li class=""><span><i class="fi ti-angle-left"></i></span></li>
+                            <li style="visibility: hidden"><span><i class="fi ti-angle-left"></i></span></li>
                         @else
                             <li><a href="{{ $news->previousPageUrl() }}" aria-label="Previous"><i class="fi ti-angle-left"></i></a></li>
                         @endif
@@ -57,7 +57,7 @@
                         @if ($news->hasMorePages())
                             <li><a href="{{ $news->nextPageUrl() }}" aria-label="Next"><i class="fi ti-angle-right"></i></a></li>
                         @else
-                            <li class="disabled"><span><i class="fi ti-angle-right"></i></span></li>
+                            <li style="visibility: hidden"><span><i class="fi ti-angle-right"></i></span></li>
                         @endif
                     </ul>
                 </div>

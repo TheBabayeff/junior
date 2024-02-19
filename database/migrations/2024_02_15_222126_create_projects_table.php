@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ankets', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vacancy_id')->cascadeOnDelete();
-            $table->string('name');
-            $table->string('phone');
+            $table->longText('title');
+            $table->longText('slug');
             $table->longText('photo');
-            $table->longText('pdf');
-            $table->enum('status', ['new', 'viewed'])->default('new');
-            $table->longText('description');
+            $table->longText('content');
+            $table->date('published_at')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ankets');
+        Schema::dropIfExists('projects');
     }
 };

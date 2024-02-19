@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\VacancyResource\Pages;
-use App\Filament\Resources\VacancyResource\RelationManagers;
-use App\Filament\Resources\VacancyResource\RelationManagers\AnketsRelationManager;
-use App\Models\Vacancy;
+use App\Filament\Resources\ProjectResource\Pages;
+use App\Filament\Resources\ProjectResource\RelationManagers;
+use App\Models\News;
+use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,29 +13,39 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
-class VacancyResource extends Resource
+class ProjectResource extends Resource
 {
-    protected static ?string $model = Vacancy::class;
+    protected static ?string $model = Project::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->maxLength(255),
-                Forms\Components\DatePicker::make('expiration_at'),
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+
+                Forms\Components\TextInput::make('slug')
+                    ->disabled()
+                    ->dehydrated()
+                    ->required()
+                    ->unique(Project::class, 'slug', ignoreRecord: true),
+
                 Forms\Components\FileUpload::make('photo')
                     ->helperText('Şəkil 1024x768 ölçüdə olmalıdır.')
-                    ->directory('vacancy-photos')
+                    ->directory('project-photos')
+                    ->downloadable()
+                    ->multiple()
                     ->columnSpanFull(),
-                Forms\Components\MarkdownEditor::make('description')
+                Forms\Components\MarkdownEditor::make('content')
+                    ->required()
                     ->columnSpanFull(),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required(),
+                Forms\Components\DatePicker::make('published_at'),
             ]);
     }
 
@@ -43,13 +53,11 @@ class VacancyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('expiration_at')
+                Tables\Columns\TextColumn::make('published_at')
                     ->date()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_visible')
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -75,16 +83,16 @@ class VacancyResource extends Resource
     public static function getRelations(): array
     {
         return [
-            AnketsRelationManager::class,
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListVacancies::route('/'),
-            'create' => Pages\CreateVacancy::route('/create'),
-            'edit' => Pages\EditVacancy::route('/{record}/edit'),
+            'index' => Pages\ListProjects::route('/'),
+            'create' => Pages\CreateProject::route('/create'),
+            'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 }

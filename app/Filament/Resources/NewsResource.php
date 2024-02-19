@@ -39,6 +39,7 @@ class NewsResource extends Resource
                     ->relationship('author', 'name')
                     ->required(),
                 Forms\Components\FileUpload::make('photo')
+                    ->helperText('Şəkil 1024x768 ölçüdə olmalıdır.')
                     ->directory('news-photos')
                     ->downloadable()
                     ->columnSpanFull(),

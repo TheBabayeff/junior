@@ -24,4 +24,20 @@ class HomeController extends Controller
 
         return view('frontend.index', compact('partners','news', 'youngs','teams','vacancies','galleries'));
     }
+
+    public function about()
+    {
+        $partners = Partner::inRandomOrder()->take(10)->get();
+        $teams    = Team::all();
+        return view('frontend.about' , compact('partners','teams'));
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+    public function ourTeam()
+    {
+        return view('frontend.our-team');
+    }
 }

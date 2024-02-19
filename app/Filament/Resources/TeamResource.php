@@ -33,6 +33,7 @@ class TeamResource extends Resource
                 Forms\Components\TextInput::make('position')
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('photo')
+                    ->helperText('Şəkil 500x670 ölçüdə olmalıdır.')
                     ->directory('team-photos')
                     ->columnSpanFull(),
                 Forms\Components\MarkdownEditor::make('description')

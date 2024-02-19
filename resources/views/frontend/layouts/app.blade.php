@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="TheBabayeff">
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
-    <title>Junior Achievment Azerbaijan </title>
+    <title>@yield('title')</title>
     <link href="{{ asset('assets/css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/flaticon.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -68,29 +68,38 @@
                         <div id="navbar" class="collapse navbar-collapse navigation-holder">
                             <button class="menu-close"><i class="ti-close"></i></button>
                             <ul class="nav navbar-nav mb-2 mb-lg-0">
-                                <li><a class="active" href="{{ route('welcome') }}">{{ __('welcome.home') }}</a></li>
+                                <li>
+                                    <a class="{{ request()->routeIs('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">{{ __('welcome.home') }}</a>
+                                </li>
                                 <li class="menu-item-has-children">
-                                    <a  href="#">{{ __('welcome.about') }}</a>
+                                    <a class="{{ request()->is('about', 'vacancies' ) ? 'active' : '' }}" href="#">{{ __('welcome.about') }}</a>
                                     <ul class="sub-menu">
-                                        <li><a href="">{{ __('welcome.whoWeAre') }}</a></li>
-                                        <li><a href="">{{ __('welcome.jobOpportunities') }}</a></li>
+                                        <li><a class="{{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">{{ __('welcome.whoWeAre') }}</a></li>
+                                        <li><a href="{{ route('vacancies') }}">{{ __('welcome.jobOpportunities') }}</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a  href="#">{{ __('welcome.activities') }}</a>
+                                    <a class="{{ request()->is('activities', 'jaPrograms' , 'projects') ? 'active' : '' }}" href="#">{{ __('welcome.activities') }}</a>
                                     <ul class="sub-menu">
                                         <li><a href="">{{ __('welcome.jaPrograms') }}</a></li>
-                                        <li><a href="">{{ __('welcome.projects') }}</a></li>
+                                        <li><a href="{{ route('projects') }}">{{ __('welcome.projects') }}</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a  href="#">{{ __('welcome.media') }}</a>
+                                    <a class="{{ request()->is('media', 'news' , 'gallery') ? 'active' : '' }}" href="#">{{ __('welcome.media') }}</a>
                                     <ul class="sub-menu">
-                                        <li><a class="active" href="">{{ __('welcome.gallery') }}</a></li>
-                                        <li><a href="{{ route('news') }}">{{ __('welcome.news') }}</a></li>
+                                        <li><a class="{{ request()->routeIs('gallery') ? 'active' : '' }}" href="{{ route('gallery') }}">{{ __('welcome.gallery') }}</a></li>
+                                        <li><a class="{{ request()->routeIs('news') ? 'active' : '' }}" href="{{ route('news') }}">{{ __('welcome.news') }}</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">{{ __('welcome.contact') }}</a></li>
+                                <li class="menu-item-has-children">
+                                    <a class="{{ request()->is('contact', 'ourTeam') ? 'active' : '' }}" href="">{{ __('welcome.contact') }}</a>
+                                    <ul class="sub-menu">
+
+                                        <li><a class="{{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">{{ __('welcome.contact') }}</a></li>
+                                        <li><a class="{{ request()->routeIs('ourTeam') ? 'active' : '' }}" href="{{ route('ourTeam') }}">{{ __('welcome.ourTeam') }}</a></li>
+                                    </ul>
+                                </li>
                             </ul>
 
                         </div><!-- end of nav-collapse -->
@@ -102,11 +111,12 @@
                             </div>
                             <div class="header-search-form-wrapper">
                                 <div class="cart-search-contact">
+
                                     <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
                                     <div class="header-search-form">
-                                        <form>
+                                        <form action="{{ route('search') }}" method="GET">
                                             <div>
-                                                <input type="text" class="form-control"
+                                                <input type="text" name="search" class="form-control"
                                                        placeholder="Search here...">
                                                 <button type="submit"><i class="fi flaticon-search"></i></button>
                                             </div>
