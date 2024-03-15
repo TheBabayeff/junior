@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PartnerResource extends Resource
 {
     protected static ?string $model = Partner::class;
+    protected static ?string $label = 'Tərəfdaşlar';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

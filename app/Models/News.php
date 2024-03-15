@@ -18,6 +18,9 @@ class News extends Model
         'published_at',
     ];
 
+    protected $casts = [
+        'photo' => 'array'
+    ];
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class, 'author_id');

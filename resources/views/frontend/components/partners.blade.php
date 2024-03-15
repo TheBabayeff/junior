@@ -1,12 +1,10 @@
 
-<section class="partners-section section-padding">
+<section class="partners-section section-padding" style="padding: 50px 0;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="wpo-section-title">
-                    <h2>Our Partners & Donors</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered alteration in some form,</p>
+                    <h2>{{ __('welcome.ourPartners') }}</h2>
                 </div>
             </div>
         </div>

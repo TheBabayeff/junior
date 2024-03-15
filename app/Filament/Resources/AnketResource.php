@@ -15,11 +15,18 @@ use Illuminate\Support\Facades\Storage;
 class AnketResource extends Resource
 {
     protected static ?string $model = Anket::class;
+    protected static ?string $label = 'Anketlər(Vakansiya)';
+
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     public static function getNavigationBadge(): ?string
     {
         return static::$model::where('status', 'new')->count();
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
     public static function form(Form $form): Form
     {

@@ -32,7 +32,9 @@ class SearchController extends Controller
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('slug', 'LIKE', "%{$search}%")
             ->orWhere('content', 'LIKE', "%{$search}%")
-            ->paginate(6);
+            ->paginate(6)
+            ->appends(['search' => $search]);;
+
 
         return view('frontend.components.search', compact('searchNews', 'partners'));
     }

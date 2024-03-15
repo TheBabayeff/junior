@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="TheBabayeff">
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/junior.png') }}">
     <title>@yield('title')</title>
     <link href="{{ asset('assets/css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/flaticon.css') }}" rel="stylesheet">
@@ -60,7 +60,7 @@
                     <div class="col-lg-3 col-md-6 col-6">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{ route('welcome') }}">
-                                <img src="{{ asset('assets/images/junior.png') }}" width="200px;" alt="">
+                                <img src="{{ asset('assets/images/junior.png') }}" width="175px;" style="padding-bottom: 5px;" alt="JA Azerbaijan">
                             </a>
                         </div>
                     </div>
@@ -74,14 +74,14 @@
                                 <li class="menu-item-has-children">
                                     <a class="{{ request()->is('about', 'vacancies' ) ? 'active' : '' }}" href="#">{{ __('welcome.about') }}</a>
                                     <ul class="sub-menu">
-                                        <li><a class="{{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">{{ __('welcome.whoWeAre') }}</a></li>
+                                        <li><a class="{{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">{{ __('welcome.about') }}</a></li>
                                         <li><a href="{{ route('vacancies') }}">{{ __('welcome.jobOpportunities') }}</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a class="{{ request()->is('activities', 'jaPrograms' , 'projects') ? 'active' : '' }}" href="#">{{ __('welcome.activities') }}</a>
                                     <ul class="sub-menu">
-                                        <li><a href="">{{ __('welcome.jaPrograms') }}</a></li>
+                                        <li><a href="https://jausa.ja.org/programs/index">{{ __('welcome.jaPrograms') }}</a></li>
                                         <li><a href="{{ route('projects') }}">{{ __('welcome.projects') }}</a></li>
                                     </ul>
                                 </li>
@@ -93,11 +93,11 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a class="{{ request()->is('contact', 'ourTeam') ? 'active' : '' }}" href="">{{ __('welcome.contact') }}</a>
+                                    <a class="{{ request()->is('contact', 'our-team') ? 'active' : '' }}" href="">{{ __('welcome.contact') }}</a>
                                     <ul class="sub-menu">
 
                                         <li><a class="{{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">{{ __('welcome.contact') }}</a></li>
-                                        <li><a class="{{ request()->routeIs('ourTeam') ? 'active' : '' }}" href="{{ route('ourTeam') }}">{{ __('welcome.ourTeam') }}</a></li>
+                                        <li><a class="{{ request()->routeIs('our-team') ? 'active' : '' }}" href="{{ route('ourTeam') }}">{{ __('welcome.ourTeam') }}</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -107,7 +107,7 @@
                     <div class="col-lg-3 col-md-2 col-2">
                         <div class="header-right">
                             <div class="close-form">
-                                <a class="theme-btn" href="{{ route('volunteers') }}">{{ __('welcome.getInvolved') }}</a>
+                                <a class="theme-btn-s2" href="{{ route('volunteers') }}">{{ __('welcome.getInvolved') }}</a>
                             </div>
                             <div class="header-search-form-wrapper">
                                 <div class="cart-search-contact">
@@ -137,82 +137,46 @@
 
 
     <footer class="wpo-site-footer">
-        <div class="wpo-upper-footer">
+        <div class="wpo-upper-footer" style="padding:0px 0px; ">
             <div class="container">
                 <div class="row">
                     <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
                         <div class="widget about-widget">
                             <div class="logo widget-title">
-                                <img src="{{ asset('assets/images/juniorWhite.png') }}" width="250px;" alt="blog">
+                                <img src="{{ asset('assets/images/juniorWhite.png') }}" width="150px;" style="padding-top: 20px;" alt="JA Azerbaijan">
                             </div>
-                            <p>Welcome and open yourself to your truest love this year with us! With the Release Process</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col col-lg-3 col-md-6 col-sm-12 col-12 ">
+                        <div class="contact-ft">
                             <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-twitter-alt"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-google"></i>
-                                    </a>
-                                </li>
+                                <li><i class="fi flaticon-mail"></i>info@ja-azerbaijan.org</li>
+                                <li><i class="fi flaticon-mail"></i>info@ja-azerbaijan.org</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col col-lg-2 col-md-6 col-sm-12 col-12">
-                        <div class="widget link-widget">
-                            <div class="widget-title">
-                                <h3></h3>
-                            </div>
-
+                    <div class="col col-lg-3 col-md-6 col-sm-12 col-12 " >
+                        <div class="contact-ft">
+                            <ul>
+                                <li><i class="fi flaticon-phone-call"></i>{{ $settings->main_firstPhone }}</li>
+                                <li><i class="fi flaticon-phone-call"></i>{{ $settings->main_secondPhone }}</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="widget wpo-service-link-widget">
-                            <div class="widget-title">
-                                <h3>Contact </h3>
-                            </div>
-                            <div class="contact-ft">
-                                <p>Would you have any enquiries.Please feel free to contuct us</p>
-                                <ul>
-                                    <li><i class="fi flaticon-mail"></i>info@ja-azerbaijan.org</li>
-                                    <li><i class="fi flaticon-phone-call"></i>+994 (55) 555 55 55</li>
-                                    <li><i class="fi flaticon-location"></i>Baku –Caspian Plaza 1075 Avenue</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
-                        <div class="widget instagram">
-                            <div class="widget-title">
-                                <h3>Projects</h3>
-                            </div>
-                            <ul class="d-flex">
-                                <li><a class="video-btn" data-fancybox="gallery" href="assets/images/instragram/1.jpg"><img src="assets/images/instragram/1.jpg" alt=""></a></li>
-                                <li><a class="video-btn" data-fancybox="gallery" href="assets/images/instragram/2.jpg"><img src="assets/images/instragram/2.jpg" alt=""></a></li>
-                                <li><a class="video-btn" data-fancybox="gallery" href="assets/images/instragram/3.jpg"><img src="assets/images/instragram/3.jpg" alt=""></a></li>
-                                <li><a class="video-btn" data-fancybox="gallery" href="assets/images/instragram/4.jpg"><img src="assets/images/instragram/4.jpg" alt=""></a></li>
-                                <li><a class="video-btn" data-fancybox="gallery" href="assets/images/instragram/5.jpg"><img src="assets/images/instragram/5.jpg" alt=""></a></li>
-                                <li><a class="video-btn" data-fancybox="gallery" href="assets/images/instragram/6.jpg"><img src="assets/images/instragram/6.jpg" alt=""></a></li>
+                    <div class="col col-lg-3 col-md-6 col-sm-12 col-12 " >
+                        <div class="contact-ft">
+                            <ul>
+                                <li><i class="fi flaticon-location"></i>{{ $settings->main_addressFirst }}</li>
+                                <li><i class="fi flaticon-location"></i>{{ $settings->main_addressSecond }}</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div> <!-- end container -->
         </div>
-        <div class="wpo-lower-footer">
+        <div class="wpo-lower-footer" style="background: #285F74">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">

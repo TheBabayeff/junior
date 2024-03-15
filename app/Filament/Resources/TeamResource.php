@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
+    protected static ?string $label = 'Bizim Komanda';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class GalleryResource extends Resource
 {
     protected static ?string $model = Gallery::class;
+    protected static ?string $label = 'Qalereya';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
-
+    protected static ?string $label = 'Xəbərlər';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -35,11 +35,10 @@ class NewsResource extends Resource
                     ->required()
                     ->unique(News::class, 'slug', ignoreRecord: true),
 
-                Forms\Components\Select::make('author_id')
-                    ->relationship('author', 'name')
-                    ->required(),
+
                 Forms\Components\FileUpload::make('photo')
                     ->helperText('Şəkil 1024x768 ölçüdə olmalıdır.')
+                    ->multiple()
                     ->directory('news-photos')
                     ->downloadable()
                     ->columnSpanFull(),

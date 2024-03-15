@@ -18,6 +18,7 @@ use Illuminate\Support\Str;
 class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
+    protected static ?string $label = 'Layihələr';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class AuthorResource extends Resource
 {
     protected static ?string $model = Author::class;
+    protected static ?string $label = 'Redaktorlar';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

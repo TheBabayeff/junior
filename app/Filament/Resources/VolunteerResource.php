@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 class VolunteerResource extends Resource
 {
     protected static ?string $model = Volunteer::class;
+    protected static ?string $label = 'Könüllü müraciətləri';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

@@ -10,14 +10,15 @@
                 <div class="col-lg-8">
                     <div class="wpo-about-video-item">
                         <div class="wpo-about-video-img">
-                            <img src="assets/images/kollektiv.png" alt="">
+                            <img src="{{ asset("storage/" . $settings->about_firstPhoto) }}" alt="">
                             <div class="entry-media video-holder">
-                                <a href="https://www.youtube.com/embed/iSbzh0r9IV4?autoplay=1" class="video-btn" data-type="iframe">
+                                <a href="{{ $settings->about_firstVideo }}" class="video-btn" data-type="iframe">
                                     <i class=""></i>
                                 </a>
                             </div>
                         </div>
                         <h2>See what we do for the <span>poor people and the children</span></h2>
+
                     </div>
                 </div>
             </div>
@@ -33,7 +34,7 @@
                     <div class="wpo-features-item">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/KadrIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/SahibkarIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
@@ -45,7 +46,7 @@
                     <div class="wpo-features-item">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/KadrIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/SahibkarIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
@@ -57,7 +58,7 @@
                     <div class="wpo-features-item">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/KadrIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/SahibkarIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
@@ -69,7 +70,7 @@
                     <div class="wpo-features-item">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/KadrIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/SahibkarIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
@@ -88,29 +89,27 @@
                     <div class="col-lg-5 col-md-12 col-12">
                         <div class="wpo-about-wrap">
                             <div class="wpo-about-img">
-                                <img src="assets/images/opportunirty.png" alt="">
+                                <img src="{{ asset("storage/" . $settings->about_secondPhoto) }}" alt="">
                                 <div class="pop-up-video">
                                     <div class="video-holder">
-                                        <a href="https://www.youtube.com/embed/DG3lDoUt8Uw" class="video-btn" data-type="iframe"><i class="fi flaticon-play"></i></a>
+                                        <a href="{{ $settings->about_secondVideo }}" class="video-btn" data-type="iframe"><i class="fi flaticon-play"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ab-shape"><img src="assets/images/slider/right-img5.png" alt=""></div>
+                            <div class="ab-shape"><img src="{{ asset('assets/images/slider/right-img5.png') }}" alt=""></div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="wpo-about-text">
-                            <span>About Us</span>
-                            <h2>We are Protecting The Ocean With All Our Dedication.</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                            <span>{{ __('welcome.ourActivity') }}</span>
+                            <h2>{{ __('welcome.youthPrograms') }}</h2>
+                            <p>{{ __('about.focusesOn') }}</p>
                             <ul>
-                                <li>The standard chunk of Lorem Ipsum used since.</li>
-                                <li>Randomised words which don't look even slightly believable.</li>
-                                <li>Making this the first true generator on the Internet.</li>
+                                <li>{{ __('welcome.workReadiness') }}</li>
+                                <li>{{ __('welcome.entrepreneurship') }}</li>
+                                <li>{{ __('welcome.financialLiteracy') }}</li>
                             </ul>
-                            <a class="theme-btn-s2" href="about.html">More About</a>
+                            <a class="theme-btn-s2" href="{{ route('projects') }}">{{ __('welcome.moreAbout') }}</a>
                         </div>
                     </div>
                 </div>
@@ -118,12 +117,34 @@
         </div>
     </section>
     <!-- end of wpo-hero-section-1 slider -->
+
+    <!-- wpo-cta-area end -->
+    <div class="wpo-cta-area-s2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="wpo-cta-section">
+                        <div class="wpo-cta-content">
+                            <h2>Lets Chenge The World With Humanity</h2>
+                            <a href="{{ route('volunteers') }}">{{ __('welcome.becomeVolunteer') }}</a>
+                        </div>
+                        <div class="volunteer-img">
+                            <img src="assets/images/volunteer.png" alt="">
+                        </div>
+                        <div class="shape"><img src="assets/images/cta-shape.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start of wpo-blog-section -->
+
     <section class="wpo-features-section-s5">
         <div class="container">
             <div class="row justify-content-center" >
                 <div class="col-lg-6">
                     <div class="wpo-section-title" >
-                        <span>What We Do</span>
+                        <span> JA Azerbaijan</span>
                         <h2>Fəaliyyət istiqamətimiz</h2>
                         <p>JA təlim proqramları özündə üç əsas istiqamət – karyerahazırlığı, maliyyə savadlılığı və
                             sahibkarlıq – əks etdirən bir kurrikulum üzərində hazırlanıb.</p>
@@ -132,40 +153,40 @@
             </div>
             <div class="row" >
                 <div class="col col-xl-4 col-lg-4 col-sm-6 col-12">
-                    <div class="wpo-features-item">
+                    <div class="wpo-features-item" style="height: 320px;">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/KadrIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/KadrIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
-                            <h2><a href="service-single.html">Karyera hazırlığı</a></h2>
+                            <h2><a href="#">Karyera hazırlığı</a></h2>
                             <p>JA gəncləri iş dünyası ilə tanış edir və onlara məqsədyönlü şəkildə peşə seçimi etmələri üçün kömək edir</p>
                         </div>
                     </div>
                 </div>
                 <div class="col col-xl-4 col-lg-4 col-sm-6 col-12">
-                    <div class="wpo-features-item active">
+                    <div class="wpo-features-item " style="height: 320px;">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/SahibkarIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/SahibkarIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
-                            <h2><a href="service-single.html">Sahibkarlıq</a></h2>
+                            <h2><a href="#">Sahibkarlıq</a></h2>
                             <p>JA iş dünyası ilə təhsil sistemi arasında körpü quraraq gənclər üçün sahibkarlıqanlayışı, biznes və onun idarə olunması, əmək bazarının tələblərini daha yaxşıanlamaları üçün proqramlar həyata keçirir</p>
                         </div>
                     </div>
                 </div>
                 <div class="col col-xl-4 col-lg-4 col-sm-6 col-12">
-                    <div class="wpo-features-item">
+                    <div class="wpo-features-item" style="height: 320px;">
                         <div class="wpo-features-icon">
                             <div class="icon">
-                                <img src="assets/images/icon/MaaliyeIcon.png" alt="">
+                                <img src="{{ asset('assets/images/icon/MaaliyeIcon.png') }}" alt="">
                             </div>
                         </div>
                         <div class="wpo-features-text">
-                            <h2><a href="service-single.html">Maliyyə savadlılığı</a></h2>
+                            <h2><a href="#">Maliyyə savadlılığı</a></h2>
                             <p>JA büdcə, xərc, gəlir, investisiya və kreditdən məsuliyyətli istifadə mövzusundapraktik təlimlər keçirir</p>
                         </div>
                     </div>
@@ -173,41 +194,9 @@
             </div>
         </div>
     </section>
-    <!-- end of wpo-features-section -->
-    <!-- wpo-team-area start -->
-    <div class="wpo-team-area section-padding" style="background: #FFFFFF">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="wpo-section-title">
-                        <span>Expert Team</span>
-                        <h2>Meet Our Volunteer Team</h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form,</p>
-                    </div>
-                </div>
-            </div>
-            <div class="wpo-team-wrap">
-                <div class="team-slider owl-carousel">
-                    @foreach($teams AS $team)
-                    <div class="wpo-team-item">
-                        <div class="wpo-team-img">
-                            <img src="assets/images/team/2.jpg" alt="">
-                        </div>
-                        <div class="wpo-team-content">
-                            <h2><a href="team-single.html">Maria Belziana</a></h2>
-                            <span>Volunteer</span>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- wpo-team-area end -->
 
     <!-- start partners-section -->
-    <section class="partners-section section-padding">
+    <section class="partners-section section-padding" style="padding: 50px;">
         <h2 class="hidden">partner</h2>
         <div class="container">
             <div class="row">

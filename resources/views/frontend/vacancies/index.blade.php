@@ -45,7 +45,7 @@
                                         <span>{{ $vacancy->expiration_at }}</span>
                                         <h2><a href="{{ route('vacancy.show', $vacancy->id) }}">{{ $vacancy->name }}</a></h2>
                                         <p>{{ \Illuminate\Support\Str::limit($vacancy->description, 200) }}</p>
-                                        <a class="read-more" href="{{ route('vacancy.show', $vacancy->id) }}">Learn More...</a>
+                                        <a class="read-more" href="{{ route('vacancy.show', $vacancy->id) }}">{{ __('welcome.moreAbout') }}</a>
                                     </div>
                                 </div>
                             </div>

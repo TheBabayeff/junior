@@ -21,7 +21,7 @@
                             <div class="wpo-campaign-single">
                                 <div class="wpo-campaign-item">
                                     <div class="wpo-campaign-img">
-                                        <img src="{{ asset("storage/" . $searchNew->photo) }}" alt="">
+                                        <img src="{{ asset("storage/" . $searchNew->photo[0]) }}" alt="">
                                     </div>
                                     <div class="wpo-campaign-content">
                                         <div class="wpo-campaign-text-top">
@@ -36,6 +36,27 @@
                        @endforeach
                     @endif
                 </div>
+                @if ($searchNews->lastPage() > 1)
+                    <div class="pagination-wrapper pagination-wrapper-center">
+                        <ul class="pg-pagination">
+                            @if ($searchNews->onFirstPage())
+                                <li style="visibility: hidden"><span><i class="fi ti-angle-left"></i></span></li>
+                            @else
+                                <li><a href="{{ $searchNews->previousPageUrl() }}" aria-label="Previous"><i class="fi ti-angle-left"></i></a></li>
+                            @endif
+
+                            @foreach ($searchNews->getUrlRange(1, $searchNews->lastPage()) as $page => $url)
+                                <li class="{{ $page == $searchNews->currentPage() ? 'active' : '' }}"><a href="{{ $url }}">{{ $page }}</a></li>
+                            @endforeach
+
+                            @if ($searchNews->hasMorePages())
+                                <li><a href="{{ $searchNews->nextPageUrl() }}" aria-label="Next"><i class="fi ti-angle-right"></i></a></li>
+                            @else
+                                <li style="visibility: hidden"><span><i class="fi ti-angle-right"></i></span></li>
+                            @endif
+                        </ul>
+                    </div>
+                @endif
 
             </div>
         </div>

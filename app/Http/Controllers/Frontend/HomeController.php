@@ -16,13 +16,13 @@ class HomeController extends Controller
     public function index()
     {
         $partners = Partner::all();
-        $news     = News::with('author')->inRandomOrder()->limit('3')->get();
+        $news     = News::with('author')->limit('3')->get();
         $youngs   = Young::inRandomOrder()->limit('10')->get();
         $teams    = Team::all();
-        $vacancies = Vacancy::where('is_visible', true)->get();
-        $galleries = Gallery::inRandomOrder()->limit('10')->get();
+        //$vacancies = Vacancy::where('is_visible', true)->get();
+        //$galleries = Gallery::inRandomOrder()->limit('10')->get();
 
-        return view('frontend.index', compact('partners','news', 'youngs','teams','vacancies','galleries'));
+        return view('frontend.index', compact('partners','news', 'youngs','teams'));
     }
 
     public function about()
@@ -38,6 +38,13 @@ class HomeController extends Controller
     }
     public function ourTeam()
     {
-        return view('frontend.our-team');
+        $teams = Team::all();
+        $partners = Partner::all();
+        return view('frontend.components.ourTeam', compact('teams','partners'));
+    }
+
+    public function success()
+    {
+        return view('frontend.components.success');
     }
 }

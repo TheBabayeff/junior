@@ -679,10 +679,15 @@
                     required: true,
                     minlength: 2
                 },
-
-
                 phone: "required",
-
+                photo: {
+                    required: true,
+                    accept: "image/*",
+                },
+                pdf: {
+                    required: true,
+                    accept: "application/pdf",
+                }
 
 
 
@@ -692,6 +697,14 @@
                 name: "Please enter your name",
                 email: "Please enter your email address",
                 phone: "Please enter your phone number",
+                photo: {
+                    required: "Please upload a photo",
+                    accept: "Only image files are allowed"
+                },
+                pdf: {
+                    required: "Please upload a PDF",
+                    accept: "Only PDF files are allowed"
+                }
             },
 
             submitHandler: function (form) {

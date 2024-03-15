@@ -25,6 +25,7 @@ Route::get('language/{locale}', function ($locale) {
 Route::get('/' , [HomeController::class, 'index'])->name('welcome');
 Route::get('/about' , [HomeController::class, 'about'])->name('about');
 Route::get('/contact' , [HomeController::class, 'contact'])->name('contact');
+Route::get('/success' , [HomeController::class, 'success'])->name('success');
 
 
 Route::get('/our-team' , [HomeController::class, 'ourTeam'])->name('ourTeam');
@@ -33,8 +34,10 @@ Route::get('/search' , [SearchController::class, 'index'])->name('search');
 
 
 Route::get('/gallery' , [GalleryController::class, 'index'])->name('gallery');
+Route::get('/gallery/{id}' , [GalleryController::class, 'show'])->name('gallery.show');
 
 Route::get('/projects' , [ProjectController::class, 'index'])->name('projects');
+Route::get('/projects/{slug}' , [ProjectController::class, 'show'])->name('project.show');
 
 Route::get('/news' , [NewsController::class, 'index'])->name('news');
 Route::get('/news/{slug}' , [NewsController::class, 'show'])->name('news.show');

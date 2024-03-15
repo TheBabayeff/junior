@@ -1,79 +1,55 @@
 @extends('frontend.layouts.app')
+@section('title', 'Junior Achievment Projects')
 
 @section('content')
-    <!-- start wpo-project-section -->
-    <section class="wpo-project-section section-padding">
-        <div class="container-fluid">
-            <div class="sortable-gallery">
+    <!-- wpo-campaign-area start -->
+    <div class="wpo-campaign-area bg-green section-padding">
+        <div class="container">
+
+            <div class="wpo-campaign-wrap">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="project-grids gallery-container clearfix">
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <img src="assets/images/project/17.jpg" alt="">
-                                    <div class="hover-content">
-                                        <a class="plus" href="project-single.html"><i class="ti-plus"></i></a>
-                                        <h4><a href="project-single.html">Amazon Rainforest</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. .</p>
+                    @foreach($galleries AS $gallery)
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="wpo-campaign-single">
+                                <div class="wpo-campaign-item">
+                                    <div class="wpo-campaign-img">
+                                        <a href="{{ route('gallery.show' , $gallery->id) }}">
+                                        <img src="{{ asset("storage/" . $gallery->image[0]) }}" alt="">
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <img src="assets/images/project/19.jpg" alt="">
-                                    <div class="hover-content">
-                                        <a class="plus" href="project-single.html"><i class="ti-plus"></i></a>
-                                        <h4><a href="project-single.html">Amazon Rainforest</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. .</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <img src="assets/images/project/20.jpg" alt="">
-                                    <div class="hover-content">
-                                        <a class="plus" href="project-single.html"><i class="ti-plus"></i></a>
-                                        <h4><a href="project-single.html">African forest</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. .</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <img src="assets/images/project/21.jpg" alt="">
-                                    <div class="hover-content">
-                                        <a class="plus" href="project-single.html"><i class="ti-plus"></i></a>
-                                        <h4><a href="project-single.html">African forest plantation</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. .</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <img src="assets/images/project/22.jpg" alt="">
-                                    <div class="hover-content">
-                                        <a class="plus" href="project-single.html"><i class="ti-plus"></i></a>
-                                        <h4><a href="project-single.html">Shundarbans Forest</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. .</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <img src="assets/images/project/18.jpg" alt="">
-                                    <div class="hover-content">
-                                        <a class="plus" href="project-single.html"><i class="ti-plus"></i></a>
-                                        <h4><a href="project-single.html">Amazon Rainforest</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. .</p>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
+                @if ($galleries->lastPage() > 1)
+                    <div class="pagination-wrapper pagination-wrapper-center">
+                        <ul class="pg-pagination">
+                            @if ($galleries->onFirstPage())
+                                <li style="visibility: hidden"><span><i class="fi ti-angle-left"></i></span></li>
+                            @else
+                                <li><a href="{{ $galleries->previousPageUrl() }}" aria-label="Previous"><i class="fi ti-angle-left"></i></a></li>
+                            @endif
 
-        </div> <!-- end container -->
-    </section>
-    <!-- end wpo-project-section -->
+                            @foreach ($galleries->getUrlRange(1, $galleries->lastPage()) as $page => $url)
+                                <li class="{{ $page == $galleries->currentPage() ? 'active' : '' }}"><a href="{{ $url }}">{{ $page }}</a></li>
+                            @endforeach
+
+                            @if ($galleries->hasMorePages())
+                                <li><a href="{{ $galleries->nextPageUrl() }}" aria-label="Next"><i class="fi ti-angle-right"></i></a></li>
+                            @else
+                                <li style="visibility: hidden"><span><i class="fi ti-angle-right"></i></span></li>
+                            @endif
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+    <!-- wpo-campaign-area end -->
+
+    <!-- start partners-section -->
+{{--    @include('frontend.components.partners')--}}
+    <!-- end partners-section -->
 @endsection

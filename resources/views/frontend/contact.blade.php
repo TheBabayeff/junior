@@ -1,5 +1,5 @@
 @extends('frontend.layouts.app')
-@section('title', 'About Us')
+@section('title', 'Contact Us')
 
 @section('content')
     <div class="wpo-breadcumb-area">
@@ -7,10 +7,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="wpo-breadcumb-wrap">
-                        <h2>Contact Us</h2>
+                        <h2>{{ __('welcome.contact') }}</h2>
                         <ul>
-                            <li><a href="{{ route('welcome') }}">Home</a></li>
-                            <li><span>contact</span></li>
+                            <li><a href="{{ route('welcome') }}">{{ __('welcome.home') }}</a></li>
+                            <li><span>{{ __('welcome.contact') }}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
     <section class="wpo-contact-pg-section section-padding">
         <div class="container">
             <div class="row">
-                <div class="col col-lg-10 offset-lg-1">
+                <div class="col col-lg-10 offset-lg-1" style="padding-bottom: 150px;">
                     <div class="office-info">
                         <div class="row">
                             <div class="col col-xl-4 col-lg-6 col-md-6 col-12">
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="office-info-text">
                                         <h2>Address</h2>
-                                        <p>7 Green Lake Street Crawfordsville, IN 47933</p>
+                                        <p>Bakı şəhəri , Caspian Plaza 7-ci mərtəbə</p>
                                     </div>
                                 </div>
                             </div>
@@ -48,8 +48,8 @@
                                     </div>
                                     <div class="office-info-text">
                                         <h2>Email Us</h2>
-                                        <p>Charito@gmail.com</p>
-                                        <p>helloyou@gmail.com</p>
+                                        <p>info@ja-azerbaijan.org</p>
+                                        <p>info@ja-azerbaijan.org</p>
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +62,8 @@
                                     </div>
                                     <div class="office-info-text">
                                         <h2>Call Now</h2>
-                                        <p>+1 800 123 456 789</p>
-                                        <p>+1 800 123 654 987</p>
+                                        <p>+99455 555 55 55</p>
+                                        <p>+99455 555 55 55</p>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                         <p>It is a long established fact that a reader will be distracted
                             content of a page when looking.</p>
                     </div>
-                    <div class="wpo-contact-form-area">
+                    <div class="wpo-contact-form-area" >
                         <form method="post" class="contact-validation-active" id="contact-form-main">
                             <div>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*">
@@ -85,19 +85,11 @@
                             <div>
                                 <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone*">
                             </div>
-                            <div>
-                                <select name="subject" class="form-control">
-                                    <option disabled="disabled" selected>Subject</option>
-                                    <option>Subject 1</option>
-                                    <option>Subject 2</option>
-                                    <option>Subject 3</option>
-                                </select>
-                            </div>
-                            <div class="fullwidth">
+                            <div class="">
                                 <textarea class="form-control" name="note"  id="note" placeholder="Message..."></textarea>
                             </div>
-                            <div class="submit-area">
-                                <button type="submit" class="theme-btn">Get in Touch</button>
+                            <div class="submit-area ">
+                                <button type="submit" class="theme-btn">Send</button>
                                 <div id="loader">
                                     <i class="ti-reload"></i>
                                 </div>
@@ -114,13 +106,5 @@
     </section>
     <!-- end wpo-contact-pg-section -->
 
-    <!--  start wpo-contact-map -->
-    <section class="wpo-contact-map-section">
-        <h2 class="hidden">Contact map</h2>
-        <div class="wpo-contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147703055!2d-74.11976314309273!3d40.69740344223377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbd!4v1547528325671" allowfullscreen></iframe>
-        </div>
-    </section>
-    <!-- end wpo-contact-map -->
 
 @endsection

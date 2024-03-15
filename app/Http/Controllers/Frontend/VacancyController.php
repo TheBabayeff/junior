@@ -67,7 +67,7 @@ class VacancyController extends Controller
         $cv->pdf = 'ankets-pdf/' . $pdfFileName;
         $cv->save();
 
-        return redirect()->back()->with('succcess', 'Successfull send');
+        return redirect()->route('success')->with('succcess', 'Successfull send');
     }
 
     public function volunteerCv(Request $request)
@@ -81,12 +81,15 @@ class VacancyController extends Controller
             'phone' => 'required|string|max:15',
             'pdfCV' => 'required|mimes:pdf', // |max:2048 maksimum 2MB pdf faylı
             'description' => 'nullable|string|max:1000',
+            'is_practice' => 'required|in:0,1',
+
         ]);
         // Save the CV to the database
         $cv = new Volunteer();
         $cv->name = $validatedData['name'];
         $cv->email = $validatedData['email'];
         $cv->phone = $validatedData['phone'];
+        $cv->is_practice = $validatedData['is_practice'];
         $cv->description = $validatedData['description'];
 
         // Save the uploaded PDF CV
@@ -97,7 +100,7 @@ class VacancyController extends Controller
         $cv->pdfCV = $pdfFileName;
         $cv->save();
 
-        return redirect()->back()->with('succcess', 'Successfull send');
+        return redirect()->route('success')->with('succcess', 'Successfull send');
     }
 
 

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class VacancyResource extends Resource
 {
     protected static ?string $model = Vacancy::class;
+    protected static ?string $label = 'Vakansiyalar';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?int $navigationSort = 1;

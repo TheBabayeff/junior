@@ -22,6 +22,8 @@ return [
     'latestNews' => 'Son xəbərlər və yeniliklər',
     'latestProjects' => 'Layihələrimiz',
     'ourTeam' => 'Bizim komanda',
+    'ourPartners' => 'Partnyor və Tərəfdaşlarımız' ,
+    'seeAll' => 'Hamısına bax',
 
     'youthPrograms' => 'Gənclərin Sahibkarlıq Proqramı',
     'workReadiness' => 'Karyera hazırlığı',
